@@ -12,7 +12,9 @@
     </bean>
     <bean id="musicPlayer"
           class="org.example.MusicPlayer">
-        <constructor-arg ref="musicBean" />
+        <property name="music" ref="musicBean"/>
+        <property name="name" value="iPod"/>
+        <property name="volume" value="50" />
     </bean>
 
 

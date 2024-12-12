@@ -18,16 +18,17 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="org.example.MusicPlayer">
+          class="org.example.MusicPlayer"
+        scope="prototype">
         <property name="music">
             <util:list>
                     <ref bean="musicBean"/>
                     <ref bean="musicBean1"/>
             </util:list>
         </property>
-<!--        <property name="music" ref="musicBean"/>-->
       <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}" />
+
     </bean>
 
 

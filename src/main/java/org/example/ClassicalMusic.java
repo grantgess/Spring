@@ -9,15 +9,10 @@ import javax.annotation.PreDestroy;
 
 
 public class ClassicalMusic implements Music {
-    private String[] musicList = new String[]{"classicalMusic1", "classicalMusic2", "classicalMusic3"};
+    private String songName = "classicalMusic1";
     @Override
-    public String getSong(int index) {
-        return musicList[index];
+    public String getSong() {
+        return songName;
     }
-    public void doMyInit() {
-        System.out.println("Initialization");
-    }
-    private void doMyDestroy() {
-        System.out.println("Destroying");
-    }
+
 }

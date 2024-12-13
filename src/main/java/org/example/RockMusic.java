@@ -3,9 +3,9 @@ package org.example;
 import org.springframework.stereotype.Component;
 
 public class RockMusic implements Music{
-    private String[] musicList = new String[]{"rockMusic1","rockMusic2","rockMusic3"};
+    private String songName = "rockMusic1";
     @Override
-    public String getSong(int index) {
-        return musicList[index];
+    public String getSong() {
+        return songName;
     }
 }

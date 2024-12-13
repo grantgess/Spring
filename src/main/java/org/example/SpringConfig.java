@@ -2,6 +2,8 @@ package org.example;
 
 import org.springframework.context.annotation.*;
 
+import java.util.List;
+
 @Configuration
 @ComponentScan("org.example")
 @PropertySource("classpath:musicPlayer.properties")
@@ -16,7 +18,11 @@ public class SpringConfig {
         return new RockMusic();
     }
     @Bean
+    public List<Music> musicList() {
+        return List.of(rockMusic(), classicalMusic());
+    }
+    @Bean
     public MusicPlayer musicPlayer() {
-        return new MusicPlayer(classicalMusic(),rockMusic());
+        return new MusicPlayer(musicList());
     }
 }

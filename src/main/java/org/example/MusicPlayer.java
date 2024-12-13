@@ -16,23 +16,14 @@ public class MusicPlayer {
     @Value("${musicPlayer.volume}")
     private int volume;
 
-    private Music music1;
-    private Music music2;
-
-    public MusicPlayer(Music music2, Music music1) {
-        this.music2 = music2;
-        this.music1 = music1;
+    List<Music>  musicList = new ArrayList<>();
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public void playMusic(TypeOfSong type) {
+    public void playMusic() {
         Random r = new Random();
-        if (type==TypeOfSong.ROCK) {
-            System.out.println("Playing: " + music2.getSong(r.nextInt(3)));
-        } else {
-            System.out.println("Playing: " + music1.getSong(r.nextInt(3)));
-        }
+        System.out.println("Playing: " + musicList.get(r.nextInt(musicList.size())).getSong());
     }
-    enum TypeOfSong {
-        CLASSICAL, ROCK;
-    }
+
 }

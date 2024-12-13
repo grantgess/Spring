@@ -1,41 +1,32 @@
 package org.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
+    @Autowired
+    @Qualifier("classicalMusic")
+    private Music music1;
+    @Autowired
+    @Qualifier("rockMusic")
+    private Music music2;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public MusicPlayer() {}
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void setMusic(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void playMusic() {
-        for (Music mus : musicList) {
-            System.out.println("playing music " + mus.getSong());
+    public void playMusic(TypeOfSong type) {
+        Random r = new Random();
+        if (type==TypeOfSong.ROCK) {
+            System.out.println("Playing: " + music2.getSong(r.nextInt(3)));
+        } else {
+            System.out.println("Playing: " + music1.getSong(r.nextInt(3)));
         }
+    }
+    enum TypeOfSong {
+        CLASSICAL, ROCK;
     }
 }

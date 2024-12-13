@@ -2,10 +2,11 @@ package org.example;
 
 import org.springframework.stereotype.Component;
 
-@Component("musicBean")
+@Component()
 public class ClassicalMusic implements Music {
+    private String[] musicList = new String[]{"classicalMusic1", "classicalMusic2", "classicalMusic3"};
     @Override
-    public String getSong() {
-        return "Hungarian Rhapsody";
+    public String getSong(int index) {
+        return musicList[index];
     }
 }

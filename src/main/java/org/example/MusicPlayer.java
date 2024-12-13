@@ -10,18 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Component
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     private String name;
     @Value("${musicPlayer.volume}")
     private int volume;
-    @Autowired
-    @Qualifier("classicalMusic")
+
     private Music music1;
-    @Autowired
-    @Qualifier("rockMusic")
     private Music music2;
+
+    public MusicPlayer(Music music2, Music music1) {
+        this.music2 = music2;
+        this.music1 = music1;
+    }
 
     public void playMusic(TypeOfSong type) {
         Random r = new Random();
